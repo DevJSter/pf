@@ -8,6 +8,7 @@ export default function Projects() {
 
       <div className="flex flex-col gap-5">
         {PROJECTS.map((project, id) => {
+          
           return (
             <div
               className="border-border dark:border-darkBorder shadow-light dark:shadow-dark rounded-base border-2 bg-main p-4 sm:p-5"

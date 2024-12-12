@@ -15,14 +15,15 @@ export default function Home() {
         <br />
         <div className="mb-10 text-base sm:text-lg">
           <p>
-            A saturday evening with lofi beats on my headphones and it's
-            slightly drizzling with a cold breeze caressing my face and I type
-            <span className='text-blue'> console.log("Hello World").</span>. That's the kind of
-            pleasure I seek. I am a web3 developer with over 2 years of
-            experience in building scalable and production ready smart contracts
-            and decentralized applications. I play music, meditate, go to the
-            gym everyday and...I code
-          </p>
+  A saturday evening with lofi beats on my headphones and it&apos;s
+  slightly drizzling with a cold breeze caressing my face and I type
+  <span className='text-blue'> console.log(&quot;Hello World&quot;).</span>. That&apos;s the kind of
+  pleasure I seek. I am a web3 developer with over 2 years of
+  experience in building scalable and production ready smart contracts
+  and decentralized applications. I play music, meditate, go to the
+  gym everyday and...I code
+</p>
+s
         </div>
 
         <Skills />
