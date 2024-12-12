@@ -1,13 +1,13 @@
-import PROJECTS from '@/data/projects'
+import HACKS from '@/data/hacks'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
 
 export default function Projects() {
   return (
     <div>
-      <h1 className="mb-8 text-2xl font-heading sm:text-4xl">Projects</h1>
+      <h1 className="mb-8 text-2xl font-heading sm:text-4xl">Hacks</h1>
 
       <div className="flex flex-col gap-5">
-        {PROJECTS.map((project, id) => {
+        {HACKS.map((project, id) => {
           
           return (
             <div
