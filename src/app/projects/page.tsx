@@ -1,5 +1,6 @@
 import PROJECTS from '@/data/projects'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
+import Links from '@/components/links'
 
 export default function Projects() {
   return (
@@ -51,6 +52,7 @@ export default function Projects() {
             </div>
           )
         })}
+        <Links />
       </div>
     </div>
   )

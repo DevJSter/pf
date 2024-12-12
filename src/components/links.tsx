@@ -4,6 +4,7 @@ import {
   SiGmail,
   SiLinkedin,
   SiMedium,
+  SiX,
 } from '@icons-pack/react-simple-icons'
 
 export default function Links() {
@@ -24,6 +25,10 @@ export default function Links() {
       icon: SiMedium,
       href: 'https://medium.com/@0xShubham',
     },
+    {
+      icon: SiX,
+      href: 'https://twitter.com/shubhamtwtss',
+    }
   ]
 
   return (

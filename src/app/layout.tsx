@@ -4,11 +4,15 @@ import './globals.css'
 import Nav from '@/components/nav'
 import { ViewTransitions } from 'next-view-transitions'
 import { ThemeProvider } from '@/components/theme-provider'
+import './assets/favicon.ico'
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Shubham Tiwari <Console Nerd>',
+  icons: {
+    icon: '/favicon.ico',
+  }
 }
 
 export default function RootLayout({
