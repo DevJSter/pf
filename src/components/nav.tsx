@@ -11,7 +11,7 @@ const Nav = () => {
   const path = usePathname()
 
   const links = [
-    { path: '/', text: 'About' },
+    { path: '/about', text: 'About' },
     { path: '/hacks', text: 'Hacks' },
     { path: '/projects', text: 'Projects' },
     { path: '/contact', text: 'Contact' },

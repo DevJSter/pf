@@ -1,36 +1,33 @@
+import React from 'react'
+import Image from 'next/image'
 import Links from '@/components/links'
-import Skills from '@/components/sections/skills'
-import Experience from '@/components/sections/experience'
+import memeImage from './assets/itachi.gif'
 
 export default function Home() {
   return (
     <div className="bg-bg font-base">
-      <p className="mt-2 text-lg sm:text-xl">Software Engineer</p>
+      
       <div className="mt-8 text-base sm:text-lg">
+        <div className="xs:h-[250px] xs:w-[320px] relative mx-auto h-[200px] w-[280px] sm:h-[350px] sm:w-[400px] md:h-[450px] md:w-[450px]">
+          <Image
+            src={memeImage}
+            alt="spiderman-meme"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
+
         <p>
-          Gm Gm , My name is Shubham Tiwari ,A Frontend Engineer Based in
-          Mumbai,India.
+          Gm Gm, My name is Shubham Tiwari, Web3 Developer Based in Mumbai,
+          India. Welcome to My Realm
         </p>
 
         <br />
-        <div className="mb-10 text-base sm:text-lg">
-          <p>
-  A saturday evening with lofi beats on my headphones and it&apos;s
-  slightly drizzling with a cold breeze caressing my face and I type
-  <span className='text-blue'> console.log(&quot;Hello World&quot;).</span>. That&apos;s the kind of
-  pleasure I seek. I am a web3 developer with over 2 years of
-  experience in building scalable and production ready smart contracts
-  and decentralized applications. I play music, meditate, go to the
-  gym everyday and...I code
-</p>
-s
-        </div>
-
-        <Skills />
-
-        <Experience />
       </div>
-      <p>Socials</p>
+
+      <br />
+      <h5 className="mt-2 text-lg sm:text-xl" >Socials</h5>
       <Links />
     </div>
   )
