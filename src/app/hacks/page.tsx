@@ -32,8 +32,8 @@ export default function Hacks() {
         Just a few months after diving into web3, I started challenging myself
         with projects that pushed my limits. As a competitive person, I
         discovered a passion for participating — and winning — in these
-        competitions. Whether it's web2 or web3, the thrill of innovating ideas
-        and bringing them to life is something I can't get enough of. It can be
+        competitions. Whether its web2 or web3, the thrill of innovating ideas
+        and bringing them to life is something I can not get enough of. It can be
         an addictive experience XD.
       </p>
 

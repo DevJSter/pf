@@ -20,95 +20,89 @@ export interface HackathonProject {
 
 const HACKS: HackathonProject[] = [
   {
-    name: "BuildQuest 2022",
-    projectName: "SuprArms",
-    description: "A 3D multiplayer FPS MetaVerse with 8400+ unique gun NFTs having distinguished looks and stats.",
-    previewImage: "/assets/hacks/ethglobal/buildquest/buildquestLogo.png",
-    dashboardImage: "/assets/hacks/ethglobal/buildquest/buildquest.png",
-    projectImage: "/assets/hacks/ethglobal/buildquest/suprarms.png",
+    name: "Web3 Hackathon 2024",
+    projectName: "CryptoVault",
+    description: "A decentralized vault system for managing digital assets with multi-signature support and advanced security features.",
+    previewImage: "/images/hackathons/vault-logo.jpg",
+    dashboardImage: "/images/hackathons/vault-dash.jpg",
+    projectImage: "/images/hackathons/vault-main.jpg",
     team: [
-      { name: "Gabriel", link: "https://www.linkedin.com/in/gabriel-antony/" },
-      { name: "Sailesh", link: "https://www.linkedin.com/in/sailesh-sivakumar-453061141/" },
-      { name: "Shachindra", link: "https://www.linkedin.com/in/shachindra92/" },
-      { name: "Karan", link: "https://www.linkedin.com/in/karanbdev/" }
+      { name: "Alex", link: "https://linkedin.com/in/alex" },
+      { name: "Jamie", link: "https://linkedin.com/in/jamie" },
+      { name: "Taylor", link: "https://linkedin.com/in/taylor" }
     ],
     prizes: [
-      "🕹 Best 3D Metaverse Game built on Polygon",
-      "🥉 Best Dapp using Moralis",
-      "🏅 Best Use of Chainlink"
+      "🏆 Best Security Implementation",
+      "🔐 Excellence in Privacy",
+      "⭐ Community Choice Award"
     ],
-    liveLink: "https://ethglobal.com/showcase/suprarms-7xz9r",
-    repoUrl: "https://github.com/hackproject/suprarms"
+    liveLink: "https://example.com/cryptovault",
+    repoUrl: "https://github.com/example/cryptovault"
   },
   {
-    name: "Faber Web3 2022",
-    projectName: "Brandapp", 
-    description: "Mint your brand, Create your own white-label Brand Resource Center.",
-    previewImage: "/assets/hacks/devpost/faberweb3/faberweb3logo.jpg",
-    dashboardImage: "/assets/hacks/devpost/faberweb3/faberweb3.png", 
-    projectImage: "/assets/hacks/devpost/faberweb3/brandapp.jpg",
+    name: "DeFi Summit 2024",
+    projectName: "LiquidBridge", 
+    description: "Cross-chain liquidity aggregation platform with automated market making and yield optimization strategies.",
+    previewImage: "/images/hackathons/bridge-logo.jpg",
+    dashboardImage: "/images/hackathons/bridge-dash.jpg", 
+    projectImage: "/images/hackathons/bridge-main.jpg",
     team: [
-      { name: "Gabriel", link: "https://www.linkedin.com/in/gabriel-antony/" },
-      { name: "Raksha", link: "https://www.linkedin.com/in/raksha001/" },
-      { name: "Fabian", link: "https://www.linkedin.com/in/fabianferno/" },
-      { name: "Subhiksha", link: "https://www.linkedin.com/in/elizabeth-subhiksha-victoria-b3a661193/" },
-      { name: "Veroni", link: "https://www.linkedin.com/in/veroni-shwetha/" },
-      { name: "Jesinthan", link: "https://www.linkedin.com/in/jesinthan/" }
+      { name: "Morgan", link: "https://linkedin.com/in/morgan" },
+      { name: "Casey", link: "https://linkedin.com/in/casey" },
+      { name: "Jordan", link: "https://linkedin.com/in/jordan" }
     ],
-    prizes: ["⚡ Across the Line Award"],
-    liveLink: "https://devpost.com/software/brandapp",
-    repoUrl: "https://github.com/hackproject/brandapp"
+    prizes: ["🌊 Best DeFi Innovation"],
+    liveLink: "https://example.com/liquidbridge",
+    repoUrl: "https://github.com/example/liquidbridge"
   },
   {
-    name: "Chainlink Spring 2022",
-    projectName: "AIRNFT",
-    description: "An interactive NFT service that aids the creator in bringing interactive NFTs to the market: be it games, 3D models, interactive animations etc.",
-    previewImage: "/assets/hacks/devpost/spring/springlogo.png",
-    dashboardImage: "/assets/hacks/devpost/spring/spring.png",
-    projectImage: "/assets/hacks/devpost/spring/airnft.jpg",
+    name: "NFT Hack 2024",
+    projectName: "MetaCanvas",
+    description: "Collaborative NFT creation platform with real-time editing and royalty splitting for multiple artists.",
+    previewImage: "/images/hackathons/canvas-logo.jpg",
+    dashboardImage: "/images/hackathons/canvas-dash.jpg",
+    projectImage: "/images/hackathons/canvas-main.jpg",
     team: [
-      { name: "Gabriel", link: "https://www.linkedin.com/in/gabriel-antony/" },
-      { name: "Sailesh", link: "https://www.linkedin.com/in/sailesh-sivakumar-453061141/" },
-      { name: "Shachindra", link: "https://www.linkedin.com/in/shachindra92/" },
-      { name: "Karan", link: "https://www.linkedin.com/in/karanbdev/" },
-      { name: "Ishan", link: "https://www.linkedin.com/in/ishan-pathak-96852a1b7/" }
+      { name: "Riley", link: "https://linkedin.com/in/riley" },
+      { name: "Avery", link: "https://linkedin.com/in/avery" },
+      { name: "Drew", link: "https://linkedin.com/in/drew" }
     ],
-    prizes: ["🏃 Filecoin - Runners up"],
-    liveLink: "https://devpost.com/software/ins",
-    repoUrl: "https://github.com/hackproject/airnft"
+    prizes: ["🎨 Best Creative Platform"],
+    liveLink: "https://example.com/metacanvas",
+    repoUrl: "https://github.com/example/metacanvas"
   },
   {
-    name: "HackMoney 2022",
-    projectName: "DAOLanders",
-    description: "A DAO that helps people to come together buy NFTs stake it, play with it and much more to generate income.",
-    previewImage: "/assets/hacks/ethglobal/hackmoney/hackmoneyLogo.jpg",
-    dashboardImage: "/assets/hacks/ethglobal/hackmoney/hackmoney.png",
-    projectImage: "/assets/hacks/ethglobal/hackmoney/daolanders.png",
+    name: "GameFi Hackathon 2024",
+    projectName: "CryptoQuest",
+    description: "Play-to-earn RPG with NFT character progression and cross-game asset compatibility.",
+    previewImage: "/images/hackathons/quest-logo.jpg",
+    dashboardImage: "/images/hackathons/quest-dash.jpg",
+    projectImage: "/images/hackathons/quest-main.jpg",
     team: [
-      { name: "Gabriel", link: "https://www.linkedin.com/in/gabriel-antony/" },
-      { name: "Fabian", link: "https://www.linkedin.com/in/fabianferno/" }
+      { name: "Sam", link: "https://linkedin.com/in/sam" },
+      { name: "Pat", link: "https://linkedin.com/in/pat" }
     ],
-    prizes: ["🏊‍♂️ Waku — Pool Prize"],
-    liveLink: "https://ethglobal.com/showcase/daolanders-5f4za",
-    repoUrl: "https://github.com/hackproject/daolanders"
+    prizes: ["🎮 Best Gaming Experience"],
+    liveLink: "https://example.com/cryptoquest",
+    repoUrl: "https://github.com/example/cryptoquest"
   },
   {
-    name: "ETHIndia 2022",
-    projectName: "Poly.edu",
-    description: "Proof of Education, Own what you learn.",
-    previewImage: "/assets/hacks/ethglobal/ethindia/ethindiaLogo.png",
-    dashboardImage: "/assets/hacks/ethglobal/ethindia/ethindia.png",
-    projectImage: "/assets/hacks/ethglobal/ethindia/polyedu.png",
+    name: "Chain Builders 2024",
+    projectName: "DataDAO",
+    description: "Decentralized data marketplace with automated quality verification and fair pricing mechanisms.",
+    previewImage: "/images/hackathons/dao-logo.jpg",
+    dashboardImage: "/images/hackathons/dao-dash.jpg",
+    projectImage: "/images/hackathons/dao-main.jpg",
     team: [
-      { name: "Gabriel", link: "https://www.linkedin.com/in/gabriel-antony/" }
+      { name: "Quinn", link: "https://linkedin.com/in/quinn" }
     ],
     prizes: [
-      "🏊 Valist — Prize Pool",
-      "🏊 The Graph — Pool Prize",
-      "🥇 Router — Best Use"
+      "📊 Best Data Solution",
+      "🤝 Best DAO Implementation",
+      "💫 Technical Excellence"
     ],
-    liveLink: "https://ethglobal.com/showcase/poly-edu-t2h8m",
-    repoUrl: "https://github.com/hackproject/polyedu"
+    liveLink: "https://example.com/datadao",
+    repoUrl: "https://github.com/example/datadao"
   }
 ];
 
