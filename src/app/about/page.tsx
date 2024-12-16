@@ -3,7 +3,7 @@ import Links from '@/components/links'
 import Skills from '@/components/sections/skills'
 import Experience from '@/components/sections/experience'
 
-const page = props => {
+export default function About() {
   return (
     <div>
         <p>Software Engineer</p>
@@ -36,7 +36,3 @@ const page = props => {
     </div>
   )
 }
-
-page.propTypes = {}
-
-export default page
