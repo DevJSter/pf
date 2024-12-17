@@ -38,7 +38,7 @@ const TypingText: React.FC<TypingTextProps> = ({
         setIsComplete(true)
         onComplete?.()
       }
-    }, 60)
+    }, 100)
 
     return () => clearInterval(intervalId)
   }, [text, started, onComplete, isComplete])
@@ -51,7 +51,7 @@ const TypingText: React.FC<TypingTextProps> = ({
 }
 
 export default function About() {
-  const [show, setShow] = useState(true) // Initialize as true
+  const [show, setShow] = useState(true)
 
   const introText =
     'A quiet Saturday evening, lofi beats playing softly, rain tapping ' +
@@ -63,10 +63,10 @@ export default function About() {
     'and push limits at the gym.'
 
   return (
-    <div>
-      <div>
+    <div className="min-h-screen">
+      <main className="container mx-auto px-4 py-8">
         <div className="xs:text-xs flex flex-col justify-center space-y-2 text-center text-[11px] sm:text-sm md:text-base lg:text-lg">
-          <h1 className="text-4xl font-bold">Hey, I'm Shubham.</h1>
+          <h1 className="text-4xl font-bold">Hey, I&apos;m Shubham.</h1>
           {show && (
             <TypingText
               text={introText}
@@ -75,10 +75,19 @@ export default function About() {
             />
           )}
         </div>
-      </div>
-      <Skills /> {/* Added Skills component */}
-      <Experience />
-      <Links />
+
+        <div className="mt-12">
+          <Skills />
+        </div>
+
+        <div className="mt-12">
+          <Experience />
+        </div>
+      </main>
+
+      <footer className="mt-auto py-8">
+        <Links />
+      </footer>
     </div>
   )
 }
