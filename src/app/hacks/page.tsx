@@ -1,14 +1,66 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import HACKS from '@/data/hacks'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
 import Links from '@/components/links'
 
-export default function Hacks() {
-  const [activeSlides, setActiveSlides] = useState<Record<string, number>>({})
+interface TypingTextProps {
+  text: string
+  delay?: number
+  typingSpeed?: number
+  onComplete?: () => void
+}
+
+const TypingText: React.FC<TypingTextProps> = ({
+  text,
+  delay = 100,
+  typingSpeed = 100,
+  onComplete,
+}) => {
+  const [displayText, setDisplayText] = useState('')
+  const [isComplete, setIsComplete] = useState(false)
+  const [started, setStarted] = useState(false)
+
+  const handleComplete = useCallback(() => {
+    setIsComplete(true)
+    onComplete?.()
+  }, [onComplete])
 
   useEffect(() => {
-    const intervals: NodeJS.Timeout[] = []
+    const timer = setTimeout(() => setStarted(true), delay)
+    return () => clearTimeout(timer)
+  }, [delay])
+
+  useEffect(() => {
+    if (!started || isComplete) return
+
+    let currentIndex = 0
+    const intervalId = setInterval(() => {
+      if (currentIndex <= text.length) {
+        setDisplayText(text.slice(0, currentIndex))
+        currentIndex++
+      } else {
+        clearInterval(intervalId)
+        handleComplete()
+      }
+    }, typingSpeed)
+
+    return () => clearInterval(intervalId)
+  }, [text, started, handleComplete, isComplete, typingSpeed])
+
+  return (
+    <div className="xs:min-h-[24px] min-h-[20px]">
+      {isComplete ? text : displayText}
+    </div>
+  )
+}
+
+export default function Hacks() {
+  const [activeSlides, setActiveSlides] = useState<Record<string, number>>({})
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    const intervals: ReturnType<typeof setInterval>[] = []
 
     HACKS.forEach((hack) => {
       const interval = setInterval(() => {
@@ -27,40 +79,40 @@ export default function Hacks() {
     <div>
       <h1 className="mb-8 text-2xl font-heading sm:text-4xl">My Hackathons</h1>
 
-      <p className="text-text">
-        My journey into both web2 and web3 has been deeply shaped by hackathons.
-        Just a few months after diving into web3, I started challenging myself
-        with projects that pushed my limits. As a competitive person, I
-        discovered a passion for participating — and winning — in these
-        competitions. Whether its web2 or web3, the thrill of innovating ideas
-        and bringing them to life is something I can not get enough of. It can be
-        an addictive experience XD.
-      </p>
+      {show && (
+        <TypingText
+          text="My journey into both web2 and web3 has been deeply shaped by hackathons. Just a few months after diving into web3, I started challenging myself with projects that pushed my limits. As a competitive person, I discovered a passion for participating — and winning — in these competitions. Whether its web2 or web3, the thrill of innovating ideas and bringing them to life is something I can not get enough of. It can be an addictive experience XD."
+          delay={0}
+        />
+      )}
 
       <div className="flex flex-col gap-5">
         {HACKS.map((hack, id) => {
-          const slideIndex = activeSlides[hack.name] || 0
           const images = [
             hack.previewImage,
             hack.dashboardImage,
             hack.projectImage,
-          ]
+          ].filter(Boolean)
+
+          const slideIndex = activeSlides[hack.name] || 0 % images.length
 
           return (
             <div
               className="rounded-base border-2 border-border bg-main p-4 shadow-light dark:border-darkBorder dark:shadow-dark sm:p-5"
               key={id}
             >
-              <AspectRatio
-                className="!-bottom-[2px] rounded-base border-2 border-border shadow-light dark:border-darkBorder dark:shadow-dark"
-                ratio={71 / 26}
-              >
-                <img
-                  className="w-full rounded-base"
-                  src={images[slideIndex]}
-                  alt={`${hack.name} - ${hack.projectName}`}
-                />
-              </AspectRatio>
+              {images.length > 0 && (
+                <AspectRatio
+                  className="!-bottom-[2px] rounded-base border-2 border-border shadow-light dark:border-darkBorder dark:shadow-dark"
+                  ratio={71 / 26}
+                >
+                  <img
+                    className="w-full rounded-base"
+                    src={images[slideIndex]}
+                    alt={`${hack.name} - ${hack.projectName}`}
+                  />
+                </AspectRatio>
+              )}
 
               <div className="mt-5 font-base text-text">
                 <h2 className="text-xl font-heading sm:text-2xl">
@@ -77,6 +129,7 @@ export default function Hacks() {
                         key={member.name}
                         href={member.link}
                         target="_blank"
+                        rel="noopener noreferrer"
                         className="rounded-base border border-border px-2 py-1 text-sm shadow-light transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none dark:border-darkBorder dark:bg-secondaryBlack dark:text-darkText dark:shadow-dark"
                       >
                         {member.name}
@@ -100,20 +153,26 @@ export default function Hacks() {
                 </div>
 
                 <div className="mt-8 grid grid-cols-2 gap-5">
-                  <a
-                    className="cursor-pointer rounded-base border-2 border-border bg-white px-4 py-2 text-center text-sm font-base shadow-light transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none dark:border-darkBorder dark:bg-secondaryBlack dark:text-darkText dark:shadow-dark dark:hover:shadow-none sm:text-base"
-                    href={hack.liveLink}
-                    target="_blank"
-                  >
-                    View Project
-                  </a>
-                  <a
-                    className="cursor-pointer rounded-base border-2 border-border bg-white px-4 py-2 text-center text-sm font-base shadow-light transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none dark:border-darkBorder dark:bg-secondaryBlack dark:text-darkText dark:shadow-dark dark:hover:shadow-none sm:text-base"
-                    href={hack.repoUrl}
-                    target="_blank"
-                  >
-                    Github
-                  </a>
+                  {hack.liveLink && (
+                    <a
+                      className="cursor-pointer rounded-base border-2 border-border bg-white px-4 py-2 text-center text-sm font-base shadow-light transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none dark:border-darkBorder dark:bg-secondaryBlack dark:text-darkText dark:shadow-dark dark:hover:shadow-none sm:text-base"
+                      href={hack.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Project
+                    </a>
+                  )}
+                  {hack.repoUrl && (
+                    <a
+                      className="cursor-pointer rounded-base border-2 border-border bg-white px-4 py-2 text-center text-sm font-base shadow-light transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none dark:border-darkBorder dark:bg-secondaryBlack dark:text-darkText dark:shadow-dark dark:hover:shadow-none sm:text-base"
+                      href={hack.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Github
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
