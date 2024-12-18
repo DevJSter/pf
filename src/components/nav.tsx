@@ -36,7 +36,7 @@ const Nav = () => {
           {/* Logo */}
           <Link
             href="/"
-            className="text-xl font-bold text-red transition-colors hover:text-orange-400"
+            className="text-red text-xl font-bold transition-colors hover:text-orange-400"
           >
             0xShubham.eth
           </Link>
@@ -62,9 +62,9 @@ const Nav = () => {
             </div>
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Updated classes */}
           <button
-            className="text-white hover:text-orange-400 lg:hidden"
+            className="text-gray-900 hover:text-orange-400 dark:text-white lg:hidden"
             onClick={toggleMenu}
           >
             <Menu size={24} />
