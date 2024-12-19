@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,6 +11,8 @@
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^9.4.1",
+    "@octokit/core": "^6.1.2",
+    "@octokit/rest": "^21.0.2",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
     "@radix-ui/react-tooltip": "^1.0.7",
     "class-variance-authority": "^0.7.0",
@@ -20,6 +21,7 @@
     "next": "14.2.3",
     "next-themes": "^0.3.0",
     "next-view-transitions": "^0.1.1",
+    "octokit": "^4.0.2",
     "react": "^18",
     "react-dom": "^18",
     "react-typed": "^2.0.12",
