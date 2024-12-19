@@ -5,12 +5,16 @@ import memeImage from '../assets/meme.png'
 import Links from '@/components/links'
 
 interface TypingTextProps {
-  text: string;
-  delay?: number;
-  onComplete?: () => void;
+  text: string
+  delay?: number
+  onComplete?: () => void
 }
 
-const TypingText: React.FC<TypingTextProps> = ({ text, delay = 0, onComplete }) => {
+const TypingText: React.FC<TypingTextProps> = ({
+  text,
+  delay = 0,
+  onComplete,
+}) => {
   const [displayText, setDisplayText] = useState('')
   const [isComplete, setIsComplete] = useState(false)
   const [started, setStarted] = useState(false)
@@ -76,7 +80,7 @@ const Contact = () => {
   }
 
   return (
-    <div className="min-h-screen px-2 text-white sm:px-4">
+    <div className="min-h-screen px-2 text-black dark:text-white sm:px-4">
       <div className="mx-auto mt-16 flex w-full max-w-[1200px] flex-col justify-start sm:mt-32 md:mt-[200px]">
         <div className="xs:h-[350px] mx-auto flex h-[300px] select-none flex-col text-[#A9A9A9] sm:h-[400px]">
           <div className="flex justify-around text-center">
@@ -121,12 +125,12 @@ const Contact = () => {
             <p className="xs:text-[11px] mx-2 text-[9px] sm:mx-3 sm:text-sm">
               shubht3303@gmail.com
             </p>
-          </div>                
+          </div>
         </div>
       </div>
-      <Links /> 
+      <Links />
     </div>
   )
 }
 
-export default Contact
+export default Contact;
