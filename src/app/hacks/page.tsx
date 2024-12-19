@@ -55,7 +55,7 @@ const TypingText: React.FC<TypingTextProps> = ({
         }
       }
 
-      intervalRef.current = setInterval(typeText, 50)
+      intervalRef.current = setInterval(typeText, 100)
       return () => {
         if (intervalRef.current) {
           clearInterval(intervalRef.current)
