@@ -1,11 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { AspectRatio } from '@/components/ui/aspect-ratio'
 import Links from '@/components/links'
 import { Octokit } from '@octokit/core'
 
-// Initialize Octokit
 const octokit = new Octokit({
   auth: process.env.NEXT_PUBLIC_GITHUB_TOKEN,
 })
@@ -24,7 +22,6 @@ interface ProjectData {
   description: string
   repoUrl: string
   liveLink: string
-  previewImage: string
 }
 
 export default function Projects() {
@@ -44,7 +41,6 @@ export default function Projects() {
           direction: 'desc',
         })
 
-        // Transform GitHub data to match your project structure
         const transformedProjects = repos
           .filter((repo) => !repo.topics.includes('ignore'))
           .map((repo) => ({
@@ -52,7 +48,6 @@ export default function Projects() {
             description: repo.description || 'No description available',
             repoUrl: repo.html_url,
             liveLink: repo.homepage || repo.html_url,
-            previewImage: `/project-previews/${repo.name}.png`,
           }))
 
         setProjects(transformedProjects)
@@ -78,8 +73,29 @@ export default function Projects() {
 
   if (isLoading) {
     return (
-      <div className="flex min-h-[400px] items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-gray-500" />
+      <div className="min-h-[400px]">
+        <div className="mb-8 text-center">
+          <div className="mx-auto mb-3 h-8 w-8 animate-spin rounded-full border-b-2 border-gray-500" />
+          <p className="text-gray-600 dark:text-gray-400">
+            Fetching projects from GitHub...
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+          {[...Array(4)].map((_, i) => (
+            <div
+              key={i}
+              className="animate-pulse rounded-base border-2 border-border bg-main/50 p-4 shadow-light dark:border-darkBorder dark:shadow-dark sm:p-5"
+            >
+              <div className="mb-4 h-7 w-3/4 rounded-base bg-gray-300 dark:bg-gray-700"></div>
+              <div className="mb-2 h-4 w-full rounded-base bg-gray-200 dark:bg-gray-800"></div>
+              <div className="mb-8 h-4 w-5/6 rounded-base bg-gray-200 dark:bg-gray-800"></div>
+              <div className="grid grid-cols-2 gap-5">
+                <div className="h-9 rounded-base bg-gray-300 dark:bg-gray-700"></div>
+                <div className="h-9 rounded-base bg-gray-300 dark:bg-gray-700"></div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     )
   }
@@ -88,34 +104,20 @@ export default function Projects() {
     <div>
       <h1 className="mb-8 text-2xl font-heading sm:text-4xl">Projects</h1>
 
-      <div className="flex flex-col gap-5">
+      <div className="mb-8 grid grid-cols-1 gap-5 md:grid-cols-2">
         {projects.map((project) => (
           <div
-            className="rounded-base border-2 border-border bg-main p-4 shadow-light dark:border-darkBorder dark:shadow-dark sm:p-5"
+            className="h-full rounded-base border-2 border-border bg-main p-4 shadow-light dark:border-darkBorder dark:shadow-dark sm:p-5"
             key={project.name}
           >
-            <AspectRatio
-              className="!-bottom-[2px] rounded-base border-2 border-border shadow-light dark:border-darkBorder dark:shadow-dark"
-              ratio={71 / 26}
-            >
-              <img
-                className="w-full rounded-base object-cover"
-                src={project.previewImage}
-                alt={project.name}
-                onError={(e) => {
-                  e.currentTarget.src = '/project-fallback.png'
-                }}
-              />
-            </AspectRatio>
-
-            <div className="mt-5 font-base text-text">
+            <div className="flex h-full flex-col font-base text-text">
               <h2 className="text-xl font-heading sm:text-2xl">
                 {project.name}
               </h2>
 
-              <p className="mt-2">{project.description}</p>
+              <p className="mb-6 mt-2 flex-grow">{project.description}</p>
 
-              <div className="mt-8 grid grid-cols-2 gap-5">
+              <div className="grid grid-cols-2 gap-5">
                 <a
                   className="cursor-pointer rounded-base border-2 border-border bg-white px-4 py-2 text-center text-sm font-base shadow-light transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none dark:border-darkBorder dark:bg-secondaryBlack dark:text-darkText dark:shadow-dark dark:hover:shadow-none sm:text-base"
                   href={project.liveLink}
@@ -136,8 +138,8 @@ export default function Projects() {
             </div>
           </div>
         ))}
-        <Links />
       </div>
+      <Links />
     </div>
   )
 }
