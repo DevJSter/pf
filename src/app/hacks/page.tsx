@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import HACKS from '@/data/hacks'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
 import Links from '@/components/links'
@@ -25,52 +25,53 @@ interface Hack {
 interface TypingTextProps {
   text: string
   delay?: number
-  typingSpeed?: number
   onComplete?: () => void
 }
 
 const TypingText: React.FC<TypingTextProps> = ({
   text,
-  delay = 100,
-  typingSpeed = 100,
+  delay = 0,
   onComplete,
 }) => {
   const [displayText, setDisplayText] = useState('')
   const [isComplete, setIsComplete] = useState(false)
-  const [started, setStarted] = useState(false)
-
-  const handleComplete = useCallback(() => {
-    setIsComplete(true)
-    onComplete?.()
-  }, [onComplete])
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
+  const indexRef = useRef(0)
+  const hasStartedRef = useRef(false)
 
   useEffect(() => {
-    const timer = setTimeout(() => setStarted(true), delay)
-    return () => clearTimeout(timer)
-  }, [delay])
-
-  useEffect(() => {
-    if (!started || isComplete) return
-
-    let currentIndex = 0
-    const intervalId = setInterval(() => {
-      if (currentIndex <= text.length) {
-        setDisplayText(text.slice(0, currentIndex))
-        currentIndex++
-      } else {
-        clearInterval(intervalId)
-        handleComplete()
+    const startTimeout = setTimeout(() => {
+      hasStartedRef.current = true
+      const typeText = () => {
+        if (indexRef.current <= text.length) {
+          setDisplayText(text.slice(0, indexRef.current))
+          indexRef.current++
+        } else {
+          if (intervalRef.current) {
+            clearInterval(intervalRef.current)
+          }
+          setIsComplete(true)
+          onComplete?.()
+        }
       }
-    }, typingSpeed)
 
-    return () => clearInterval(intervalId)
-  }, [text, started, handleComplete, isComplete, typingSpeed])
+      intervalRef.current = setInterval(typeText, 50)
+      return () => {
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current)
+        }
+      }
+    }, delay)
 
-  return (
-    <div className="xs:min-h-[24px] min-h-[20px]">
-      {isComplete ? text : displayText}
-    </div>
-  )
+    return () => {
+      clearTimeout(startTimeout)
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  }, [text, delay, onComplete])
+
+  return <div className="xs:min-h-[24px] min-h-[20px]">{displayText}</div>
 }
 
 const HackathonCard: React.FC<{ hack: Hack; slideIndex: number }> = ({
@@ -165,7 +166,10 @@ const HackathonCard: React.FC<{ hack: Hack; slideIndex: number }> = ({
 
 export default function Hacks() {
   const [activeSlides, setActiveSlides] = useState<Record<string, number>>({})
-  const [show, setShow] = useState(true) // Changed to true to show typing text initially
+  const [isTypingComplete, setIsTypingComplete] = useState(false)
+
+  const introText =
+    'My journey into both web2 and web3 has been deeply shaped by hackathons. Just a few months after diving into web3, I started challenging myself with projects that pushed my limits. As a competitive person, I discovered a passion for participating — and winning — in these competitions. Whether its web2 or web3, the thrill of innovating ideas and bringing them to life is something I can not get enough of. It can be an addictive experience XD.'
 
   useEffect(() => {
     const intervals: NodeJS.Timeout[] = HACKS.map((hack) =>
@@ -181,27 +185,33 @@ export default function Hacks() {
   }, [])
 
   return (
-    <div>
-      <h1 className="mb-8 text-2xl font-heading sm:text-4xl">My Hackathons</h1>
-
-      {show && (
-        <TypingText
-          text="My journey into both web2 and web3 has been deeply shaped by hackathons. Just a few months after diving into web3, I started challenging myself with projects that pushed my limits. As a competitive person, I discovered a passion for participating — and winning — in these competitions. Whether its web2 or web3, the thrill of innovating ideas and bringing them to life is something I can not get enough of. It can be an addictive experience XD."
-          delay={0}
-          onComplete={() => setShow(false)}
-        />
-      )}
-
-      <div className="flex flex-col gap-5">
-        {HACKS.map((hack, id) => (
-          <HackathonCard
-            key={id}
-            hack={hack}
-            slideIndex={activeSlides[hack.name] || 0}
+    <div className="min-h-screen">
+      <div className="container mx-auto px-4 py-8">
+        <div className="xs:text-xs flex flex-col justify-center space-y-2 text-center text-[11px] sm:text-sm md:text-base lg:text-lg">
+          <h1 className="mb-8 text-2xl font-heading sm:text-4xl">
+            My Hackathons
+          </h1>
+          <TypingText
+            text={introText}
+            delay={300}
+            onComplete={() => setIsTypingComplete(true)}
           />
-        ))}
-        <Links />
+        </div>
+
+        <div className="mt-12 flex flex-col gap-5">
+          {HACKS.map((hack, id) => (
+            <HackathonCard
+              key={id}
+              hack={hack}
+              slideIndex={activeSlides[hack.name] || 0}
+            />
+          ))}
+        </div>
       </div>
+
+      <footer className="mt-auto py-8">
+        <Links />
+      </footer>
     </div>
   )
 }
