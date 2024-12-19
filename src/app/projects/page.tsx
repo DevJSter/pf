@@ -11,10 +11,10 @@ const octokit = new Octokit({
 interface GitHubRepo {
   id: number
   name: string
-  description: string
+  description: string | null
   html_url: string
-  homepage: string
-  topics: string[]
+  homepage: string | null
+  topics?: string[] // Made optional to match GitHub API response
 }
 
 interface ProjectData {
@@ -42,8 +42,8 @@ export default function Projects() {
         })
 
         const transformedProjects = repos
-          .filter((repo) => !repo.topics.includes('ignore'))
-          .map((repo) => ({
+          .filter((repo: GitHubRepo) => !repo.topics?.includes('ignore'))
+          .map((repo: GitHubRepo) => ({
             name: repo.name,
             description: repo.description || 'No description available',
             repoUrl: repo.html_url,

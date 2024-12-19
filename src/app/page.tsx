@@ -68,7 +68,7 @@ export default function Home() {
   ]
 
   const CircleButton = ({ text }: { text: string }) => (
-    <div className="mx-auto flex h-16 w-16 flex-col justify-center rounded-full bg-[#9E5FDA] text-center text-[10px] shadow-lg shadow-purple-500/50 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-white hover:text-black hover:shadow-white md:h-24 md:w-24 md:text-base">
+    <div className="mx-auto flex h-16 w-16 flex-col justify-center rounded-full bg-[#FB933D] text-center text-[10px] shadow-lg shadow-purple-500/50 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-white hover:text-black hover:shadow-white md:h-24 md:w-24 md:text-base">
       <p className="cursor-default select-none">{text}</p>
     </div>
   )
