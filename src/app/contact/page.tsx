@@ -124,7 +124,7 @@ const Contact = () => {
           </div>                
         </div>
       </div>
-      <Links />
+      <Links /> 
     </div>
   )
 }
