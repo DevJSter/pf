@@ -88,7 +88,7 @@ const Nav = () => {
                 <X size={24} />
               </button>
             </div>
-            <nav className="flex flex-col gap-4">
+            <nav className="flex flex-col gap-4 ">
               {links.map((link) => (
                 <Link
                   key={link.path}
@@ -96,8 +96,8 @@ const Nav = () => {
                   className={clsx(
                     'rounded-md px-4 py-2 text-center font-medium text-white transition-colors',
                     path === link.path
-                      ? 'bg-orange-400 text-gray-900'
-                      : 'hover:bg-gray-800',
+                      ? 'bg-orange-400 text-gray-900 font-bold'
+                      : 'hover:bg-gray-800 hover:font-bold  ',
                   )}
                   onClick={toggleMenu}
                 >
