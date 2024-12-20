@@ -87,16 +87,16 @@ const HackathonCard: React.FC<{ hack: Hack; slideIndex: number }> = ({
   return (
     <div className="rounded-base border-2 border-border bg-main p-4 shadow-light dark:border-darkBorder dark:shadow-dark sm:p-5">
       {images.length > 0 && (
-        <AspectRatio
-          className="!-bottom-[2px] rounded-base border-2 border-border shadow-light dark:border-darkBorder dark:shadow-dark"
-          ratio={71 / 26}
-        >
-          <img
-            className="w-full rounded-base"
-            src={images[slideIndex % images.length]}
-            alt={`${hack.name} - ${hack.projectName}`}
-          />
-        </AspectRatio>
+        <div className="relative w-full overflow-hidden rounded-base border-2 border-border shadow-light dark:border-darkBorder dark:shadow-dark">
+          <div className="max-h-[500px] min-h-[200px] w-full">
+            <img
+              className="h-auto w-full rounded-base"
+              src={images[slideIndex % images.length]}
+              alt={`${hack.name} - ${hack.projectName}`}
+              style={{ maxHeight: '100%', objectFit: 'contain' }}
+            />
+          </div>
+        </div>
       )}
 
       <div className="mt-5 font-base text-text">
