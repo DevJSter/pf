@@ -4,31 +4,34 @@ const PAST_ROLES: {
   description: string
   startDate: string
   endDate: string
+  link?: string
 }[] = [
   {
-    company: 'ACME Solutions',
-    role: 'CEO',
+    company: 'What was that Meme?',
+    role: 'Builder',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam vel hic aspernatur molestiae exercitationem rerum reiciendis mollitia magnam harum ipsum?',
-    startDate: 'March 2023',
+      'I helped build the website and the backend scraper and pagination stuff for What was that Meme? It is a meme Aggregator Platfrom which basically scrapes over internet and get the memes to you.',
+    startDate: 'September 2024',
     endDate: 'Now',
+    link: 'https://whatwasthatmeme.org',
   },
   {
-    company: 'Google',
-    role: 'Software Engineer',
+    company: 'FOMO-Wallet',
+    role: 'Frontend Developer && AI agent Integrator',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam vel hic aspernatur molestiae exercitationem rerum reiciendis mollitia magnam harum ipsum?',
-    startDate: 'April 2021',
-    endDate: 'March 2023',
+    'I helped build some of the frontend components and integrated the AI agent to the wallet for better user experience and make it easier to bet on our platform.',
+    startDate: 'December 2024',
+    endDate: 'Now',
+    link: 'https://fomo-wallet-frontend.vercel.app',
   },
-  {
-    company: 'Vercel',
-    role: 'Developer Advocate',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam vel hic aspernatur molestiae exercitationem rerum reiciendis mollitia magnam harum ipsum?',
-    startDate: 'April 2021',
-    endDate: 'June 2018',
-  },
+  // {
+  //   company: 'Vercel',
+  //   role: 'Developer Advocate',
+  //   description:
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam vel hic aspernatur molestiae exercitationem rerum reiciendis mollitia magnam harum ipsum?',
+  //   startDate: 'April 2021',
+  //   endDate: 'June 2018',
+  // },
 ]
 
 export default PAST_ROLES

@@ -35,7 +35,7 @@ export default function Projects() {
         setIsLoading(true)
 
         const { data: repos } = await octokit.request('GET /user/repos', {
-          per_page: 100,
+          per_page: 400,
           affiliation: 'owner',
           sort: 'updated',
           direction: 'desc',
