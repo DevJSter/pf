@@ -19,19 +19,11 @@ const PAST_ROLES: {
     company: 'FOMO-Wallet',
     role: 'Frontend Developer && AI agent Integrator',
     description:
-    'I helped build some of the frontend components and integrated the AI agent to the wallet for better user experience and make it easier to bet on our platform.',
+      'I helped build some of the frontend components and integrated the AI agent to the wallet for better user experience and make it easier to bet on our platform.',
     startDate: 'December 2024',
     endDate: 'Now',
     link: 'https://fomo-wallet-frontend.vercel.app',
   },
-  // {
-  //   company: 'Vercel',
-  //   role: 'Developer Advocate',
-  //   description:
-  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam vel hic aspernatur molestiae exercitationem rerum reiciendis mollitia magnam harum ipsum?',
-  //   startDate: 'April 2021',
-  //   endDate: 'June 2018',
-  // },
 ]
 
 export default PAST_ROLES
