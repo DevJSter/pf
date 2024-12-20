@@ -144,7 +144,6 @@ const HackathonCard: React.FC<{ hack: Hack; slideIndex: number }> = ({
               href={hack.liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              alt="This project is private"
             >
               View Project
             </a>
