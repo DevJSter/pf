@@ -12,7 +12,7 @@ interface TypingTextProps {
 
 const TypingText: React.FC<TypingTextProps> = ({
   text,
-  delay = 0,
+  delay = 100,
   onComplete,
 }) => {
   const [displayText, setDisplayText] = useState('')
@@ -43,7 +43,7 @@ const TypingText: React.FC<TypingTextProps> = ({
   }, [text, started, onComplete, isComplete])
 
   return (
-    <div className="xs:min-h-[24px] min-h-[20px]">
+    <div className="xs:min-h-[24px] min-h-[20px] font-bold">
       {isComplete ? text : displayText}
     </div>
   )
@@ -84,10 +84,10 @@ const Contact = () => {
       <div className="mx-auto mt-16 flex w-full max-w-[1200px] flex-col justify-start sm:mt-32 md:mt-[200px]">
         <div className="xs:h-[350px] mx-auto flex h-[300px] select-none flex-col text-[#A9A9A9] sm:h-[400px]">
           <div className="flex justify-around text-center">
-            <p className="xs:w-[140px] xs:text-xs mx-2 mt-3 w-[120px] text-[10px] sm:mx-4 sm:mt-5 sm:w-[160px] sm:text-sm">
+            <p className="xs:w-[140px] xs:text-xs mx-2 mt-3 w-[120px] text-[10px] font-bold sm:mx-4 sm:mt-5 sm:w-[160px] sm:text-sm">
               You looking for a good developer
             </p>
-            <p className="xs:w-[140px] xs:text-xs mx-2 mt-3 w-[120px] text-[10px] sm:mx-4 sm:mt-5 sm:w-[160px] sm:text-sm">
+            <p className="xs:w-[140px] xs:text-xs mx-2 mt-3 w-[120px] text-[10px] font-bold sm:mx-4 sm:mt-5 sm:w-[160px] sm:text-sm">
               Me looking for a good job
             </p>
           </div>
@@ -122,7 +122,7 @@ const Contact = () => {
         >
           <div className="flex h-full w-full select-none items-center justify-center">
             <MailIcon className="xs:w-[25px] mx-2 w-[20px] fill-inherit sm:mx-3 sm:w-[30px]" />
-            <p className="xs:text-[11px] mx-2 text-[9px] sm:mx-3 sm:text-sm">
+            <p className="xs:text-[11px] mx-2 text-[9px] font-bold sm:mx-3 sm:text-sm">
               shubht3303@gmail.com
             </p>
           </div>
@@ -133,4 +133,4 @@ const Contact = () => {
   )
 }
 
-export default Contact;
+export default Contact

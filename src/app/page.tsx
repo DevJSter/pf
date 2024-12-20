@@ -79,7 +79,7 @@ export default function Home() {
         <div className="mx-auto mt-[-96px] h-screen w-full max-w-[1240px] text-center">
           <div className="flex h-full">
             {/* Left circles */}
-            <div className="mt-10 flex w-[20%] flex-col justify-evenly">
+            <div className="mt-10 flex font-bold w-[20%] flex-col justify-evenly">
               <CircleButton text="DeFi" />
               <CircleButton text="NFTs" />
               <CircleButton text="DAOs" />
@@ -98,7 +98,7 @@ export default function Home() {
                 />
               </div>
 
-              <div className="mt-8 flex flex-col space-y-4 text-center text-lg">
+              <div className="mt-8 flex flex-col space-y-4 text-center text-2xl font-extrabold">
                 <TypingText
                   text={textSequence[0].text}
                   typingSpeed={100}
@@ -139,7 +139,7 @@ export default function Home() {
             </div>
 
             {/* Right circles */}
-            <div className="mt-10 flex w-[20%] flex-col justify-evenly">
+            <div className="mt-10 flex w-[20%] flex-col justify-evenly font-bold">
               <CircleButton text="IPFS" />
               <CircleButton text="NextJS" />
               <CircleButton text="Firebase" />
