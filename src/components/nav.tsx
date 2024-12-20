@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useState } from 'react'
 import { Link } from 'next-view-transitions'
 import { usePathname } from 'next/navigation'
@@ -62,7 +63,7 @@ const Nav = () => {
             </div>
           </nav>
 
-          {/* Mobile Menu Button - Updated classes */}
+          {/* Mobile Menu Button */}
           <button
             className="text-gray-900 hover:text-orange-400 dark:text-white lg:hidden"
             onClick={toggleMenu}
@@ -71,33 +72,37 @@ const Nav = () => {
           </button>
         </div>
 
-        {/* Mobile Sidebar */}
+        {/* Mobile Sidebar - Updated with light/dark mode classes */}
         <div
           className={clsx(
-            'fixed right-0 top-0 z-50 h-full w-64 transform border-l border-gray-800 bg-gray-900 transition-transform duration-300 ease-in-out lg:hidden',
+            'fixed right-0 top-0 z-50 h-full w-64 transform border-l transition-transform duration-300 ease-in-out lg:hidden',
+            'bg-white dark:bg-gray-900', // Added light mode background
+            'border-gray-200 dark:border-gray-800', // Added light mode border
             isOpen ? 'translate-x-0' : 'translate-x-full',
           )}
         >
           <div className="p-4">
             <div className="mb-8 flex items-center justify-between">
-              <span className="text-lg font-bold text-white">Menu</span>
+              <span className="text-lg font-bold text-gray-900 dark:text-white">
+                Menu
+              </span>
               <button
-                className="text-white hover:text-orange-400"
+                className="text-gray-900 hover:text-orange-400 dark:text-white"
                 onClick={toggleMenu}
               >
                 <X size={24} />
               </button>
             </div>
-            <nav className="flex flex-col gap-4 ">
+            <nav className="flex flex-col gap-4">
               {links.map((link) => (
                 <Link
                   key={link.path}
                   href={link.path}
                   className={clsx(
-                    'rounded-md px-4 py-2 text-center font-medium text-white transition-colors',
+                    'rounded-md px-4 py-2 text-center font-medium transition-colors',
                     path === link.path
-                      ? 'bg-orange-400 text-gray-900 font-bold'
-                      : 'hover:bg-gray-800 hover:font-bold  ',
+                      ? 'bg-orange-400 font-bold text-gray-900'
+                      : 'text-gray-900 hover:bg-gray-100 hover:font-bold dark:text-white dark:hover:bg-gray-800',
                   )}
                   onClick={toggleMenu}
                 >
@@ -105,7 +110,7 @@ const Nav = () => {
                 </Link>
               ))}
               <div className="mt-4 flex justify-center">
-                <div className="rounded-md bg-gray-800 p-2">
+                <div className="rounded-md bg-gray-100 p-2 dark:bg-gray-800">
                   <ThemeSwitcher />
                 </div>
               </div>
