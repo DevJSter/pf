@@ -9,10 +9,9 @@ import './assets/favicon.ico'
 const montserrat = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  manifest: '/manifest.json',
   title: 'Shubham Tiwari <Console Nerd>',
-  icons: {
-    icon: '/favicon.ico',
-  }
+  description: 'Proof of Work is the proof of time spent on work.',
 }
 
 export default function RootLayout({
