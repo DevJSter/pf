@@ -6,7 +6,7 @@ export default function Experience() {
       <h2 className="mb-8 text-xl font-heading sm:text-2xl">Experience</h2>
 
       {PAST_ROLES.map((role) => (
-        <div className="mb-8" key={role.id}>
+        <div className="mb-8" key={`${role.company}-${role.role}`}>
           <h3 className="text-lg font-heading sm:text-xl">
             {role.role} @ {role.company}
           </h3>
@@ -19,7 +19,7 @@ export default function Experience() {
           {role.link && (
             <a
               href={role.link}
-              className="text-blue-500 hover:underline"
+              className="text-blue-500 hover:underline hover:text-red-500"
               target="_blank"
               rel="noopener noreferrer"
             >

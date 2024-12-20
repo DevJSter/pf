@@ -17,6 +17,11 @@ import {
   SiFoundryvirtualtabletop,
   SiEthereum,
   SiTailwindcss,
+  SiWeb3dotjs,
+  SiEthers,
+  SiRust,
+  SiPython,
+  SiKubernetes
 } from '@icons-pack/react-simple-icons'
 
 const SKILLS: { field: string; skills: { skill: string; icon: IconType }[] }[] =
@@ -39,6 +44,10 @@ const SKILLS: { field: string; skills: { skill: string; icon: IconType }[] }[] =
         {
           skill: 'nodejs',
           icon: SiNodedotjs,
+        },
+        {
+          skill: 'python',
+          icon: SiPython,
         },
         {
           skill: 'redis',
@@ -64,6 +73,10 @@ const SKILLS: { field: string; skills: { skill: string; icon: IconType }[] }[] =
           skill: 'docker',
           icon: SiDocker,
         },
+        {
+          skill: 'kubernetes',
+          icon: SiKubernetes,
+        },
       ],
     },
     {
@@ -78,9 +91,21 @@ const SKILLS: { field: string; skills: { skill: string; icon: IconType }[] }[] =
           icon: SiSolidity,
         },
         {
+          skill: 'web3js',
+          icon: SiWeb3dotjs,
+        },
+        {
           skill: 'foundryvtt',
           icon: SiFoundryvirtualtabletop,
         },
+        {
+          skill: 'ethers',
+          icon: SiEthers,
+        },
+        // {
+        //   skill: 'rust',
+        //   icon: SiRust,
+        // }
       ], 
     }
   ]
