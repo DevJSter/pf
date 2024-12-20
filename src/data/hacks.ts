@@ -13,7 +13,7 @@ export interface HackathonProject {
   dashboardImage: string;
   projectImage: string;
   team: TeamMember[];
-  prizes: string[] ;
+  prizes: string[] | null;
   liveLink: string;
   repoUrl: string;
 }

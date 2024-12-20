@@ -14,7 +14,7 @@ interface Hack {
   projectName: string
   description: string
   team: TeamMember[]
-  prizes: string[]
+  prizes: string[] | null
   previewImage?: string
   dashboardImage?: string
   projectImage?: string
