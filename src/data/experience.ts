@@ -1,4 +1,5 @@
 const PAST_ROLES: {
+  id: string
   company: string
   role: string
   description: string
@@ -7,6 +8,7 @@ const PAST_ROLES: {
   link?: string
 }[] = [
   {
+    id: '1',
     company: 'What was that Meme?',
     role: 'Builder',
     description:
@@ -16,6 +18,7 @@ const PAST_ROLES: {
     link: 'https://whatwasthatmeme.org',
   },
   {
+    id: '2',
     company: 'FOMO-Wallet',
     role: 'Frontend Developer && AI agent Integrator',
     description:
