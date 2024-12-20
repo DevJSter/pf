@@ -121,19 +121,21 @@ const HackathonCard: React.FC<{ hack: Hack; slideIndex: number }> = ({
           </div>
         </div>
 
-        <div className="mt-4">
-          <h3 className="font-medium">Prizes</h3>
-          <div className="mt-2 flex flex-wrap gap-2">
-            {hack.prizes.map((prize) => (
-              <span
-                key={prize}
-                className="rounded-base border border-border px-2 py-1 text-sm shadow-light dark:border-darkBorder dark:bg-secondaryBlack dark:text-darkText dark:shadow-dark"
-              >
-                {prize}
-              </span>
-            ))}
+        {hack.prizes && hack.prizes.length > 0 && (
+          <div className="mt-4">
+            <h3 className="font-medium">Prizes</h3>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {hack.prizes.map((prize) => (
+                <span
+                  key={prize}
+                  className="rounded-base border border-border px-2 py-1 text-sm shadow-light dark:border-darkBorder dark:bg-secondaryBlack dark:text-darkText dark:shadow-dark"
+                >
+                  {prize}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="mt-8 grid grid-cols-2 gap-5">
           {hack.liveLink && (
@@ -142,6 +144,7 @@ const HackathonCard: React.FC<{ hack: Hack; slideIndex: number }> = ({
               href={hack.liveLink}
               target="_blank"
               rel="noopener noreferrer"
+              alt="This project is private"
             >
               View Project
             </a>
