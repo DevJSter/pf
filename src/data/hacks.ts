@@ -95,38 +95,41 @@ const HACKS: HackathonProject[] = [
     liveLink: "https://hacksparrow.vercel.app/",
     repoUrl: "https://github.com/500-Team-Not-Found/hacksparrow"
   },
-  // {
-  //   name: "",
-  //   projectName: "",
-  //   description: "",
-  //   previewImage: "",
-  //   dashboardImage: "",
-  //   projectImage: "",
-  //   team: [
-  //     { name: "", link: "" },
-  //     { name: "", link: "" },
-  //     { name: "", link: "" }
-  //   ],
-  //   prizes: [],
-  //   liveLink: "",
-  //   repoUrl: ""
-  // },
-  //  {
-  //   name: "",
-  //   projectName: "",
-  //   description: "",
-  //   previewImage: "",
-  //   dashboardImage: "",
-  //   projectImage: "",
-  //   team: [
-  //     { name: "", link: "" },
-  //     { name: "", link: "" },
-  //     { name: "", link: "" }
-  //   ],
-  //   prizes: [],
-  //   liveLink: "",
-  //   repoUrl: ""
-  // },
+  {
+    name: "Aura Hackfest 2023",
+    projectName: "JobHunt",
+    description: "We immersed ourselves in the Job Board problem statement, with the aim of revolutionizing the job search and application process. Making UI/UX and integrating AI to provide a seamless experience for job seekers and employers.",
+    previewImage: "/hackathons/aura-logo.jpeg",
+    dashboardImage: "/hackathons/aura-main.jpeg",
+    projectImage: "",
+    team: [
+      { name: "Shubham", link: "https://linkedin.com/in/0xShubhamm" },
+      { name: "Vivek", link: "https://linkedin.com/in/vwakesahu" },
+      { name: "Roneet", link: "https://linkedin.com/in/roneet-yadav" },
+    ],
+    prizes: [],
+    liveLink: "https://jobhunt-aura.vercel.app/",
+    repoUrl: "https://github.com/SizzlingDev-s/aura_hack"
+  },
+   {
+    name: "Tech trek 2023",  
+    projectName: "Event COnnect",
+    description: "One of the basic apps we built at the start of our journey, Event Connect is a platform that connects event organizers with attendees, streamlining the event management process and enhancing the overall experience for both parties.",
+    previewImage: "/hackathons/tech-logo.png",
+    dashboardImage: "/hackathons/tech-dash.png",
+    projectImage: "/hackathons/tech-win.jpeg",
+    team: [
+      { name: "Shubham", link: "https://linkedin.com/in/0xShubhamm" },
+      { name: "Vivek", link: "https://linkedin.com/in/vwakesahu" },
+      { name: "Roneet", link: "https://linkedin.com/in/roneet-yadav" },
+      { name: "Sumeet", link: "https://www.linkedin.com/in/sumeet-parab/" }
+    ],
+    prizes: [
+      "🥈 1st Runner up of Best WebApp and PWA track"
+    ],
+    liveLink: "https://github.com/DevJSter/college-connect",
+    repoUrl: "https://github.com/DevJSter/college-connect"
+  },
   //  {
   //   name: "",
   //   projectName: "",
