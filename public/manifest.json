@@ -9,9 +9,14 @@
         "purpose": "any maskable"
       },
       {
-        "src": "/icons-384.jpeg",
+        "src": "/icons.jpg",
         "sizes": "384x384",
-        "type": "image/jpeg"
+        "type": "image/jpg"
+      },
+      {
+        "src": "/icons.jpg",
+        "sizes": "512x512",
+        "type": "image/jpg"
       }
     ],
     "theme_color": "#FFFFFF",
