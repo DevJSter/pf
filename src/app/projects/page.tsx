@@ -45,7 +45,7 @@ export default function Projects() {
           .filter((repo: GitHubRepo) => !repo.topics?.includes('ignore'))
           .map((repo: GitHubRepo) => ({
             name: repo.name,
-            description: repo.description || 'No description available',
+            description: repo.description || '',
             repoUrl: repo.html_url,
             liveLink: repo.homepage || repo.html_url,
           }))
