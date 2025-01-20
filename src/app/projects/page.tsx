@@ -1,7 +1,5 @@
 'use client'
-
 import { useEffect, useState } from 'react'
-import Links from '@/components/links'
 import { Octokit } from '@octokit/core'
 
 const octokit = new Octokit({
@@ -139,7 +137,6 @@ export default function Projects() {
           </div>
         ))}
       </div>
-      <Links />
     </div>
   )
 }

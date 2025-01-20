@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import memeImage from '../assets/meme.png'
-import Links from '@/components/links'
 
 interface TypingTextProps {
   text: string
@@ -128,7 +127,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <Links />
     </div>
   )
 }

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/nav'
+import Links from '@/components/links'
 import { ViewTransitions } from 'next-view-transitions'
 import { ThemeProvider } from '@/components/theme-provider'
 import './assets/favicon.ico'
@@ -28,6 +29,7 @@ export default function RootLayout({
             <div className="text-text dark:text-darkText mx-auto w-[750px] max-w-full px-5 pb-10 pt-28">
               {children}
             </div>
+            <Links />
           </ThemeProvider>
         </body>
       </html>

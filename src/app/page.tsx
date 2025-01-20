@@ -3,7 +3,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import Links from '@/components/links'
 import memeImage from './assets/itachi.gif'
 
 interface TypingTextProps {
@@ -148,10 +147,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-
-      <footer className="mt-auto py-8">
-        <Links />
-      </footer>
     </div>
   )
 }

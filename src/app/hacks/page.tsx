@@ -1,8 +1,6 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 import HACKS from '@/data/hacks'
-import { AspectRatio } from '@/components/ui/aspect-ratio'
-import Links from '@/components/links'
 
 interface TeamMember {
   name: string
@@ -208,10 +206,6 @@ export default function Hacks() {
           ))}
         </div>
       </div>
-
-      <footer className="mt-auto py-8">
-        <Links />
-      </footer>
     </div>
   )
 }

@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import { useState, useEffect } from 'react'
-import Links from '@/components/links'
 import Skills from '@/components/sections/skills'
 import Experience from '@/components/sections/experience'
 
@@ -84,10 +83,6 @@ export default function About() {
           <Experience />
         </div>
       </main>
-
-      <footer className="mt-auto py-8">
-        <Links />
-      </footer>
     </div>
   )
 }
