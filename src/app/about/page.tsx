@@ -141,14 +141,14 @@ export default function About() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-white to-orange-400 bg-clip-text text-transparent pb-2">
+              <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 to-orange-600 dark:from-white dark:to-orange-400 bg-clip-text text-transparent pb-2">
                 Hey, I&apos;m Shubham.
               </h1>
-              <div className="h-1 w-20 bg-orange-400 mx-auto md:mx-0 rounded-full mt-2" />
+              <div className="h-1 w-20 bg-orange-500 mx-auto md:mx-0 rounded-full mt-2" />
             </motion.div>
             
             {show && (
-              <div className="max-w-2xl mx-auto md:mx-0 text-sm md:text-base lg:text-lg space-y-4 leading-relaxed font-light">
+              <div className="max-w-2xl mx-auto md:mx-0 text-sm md:text-base lg:text-lg space-y-4 leading-relaxed font-light text-gray-800 dark:text-gray-300">
                 {introParagraphs.map((paragraph, index) => (
                   <motion.div
                     key={index}
@@ -181,8 +181,8 @@ export default function About() {
         >
           <div className="text-center md:text-left mb-8">
             <SectionHeading title="Skills & Technologies" />
-            <p className="text-gray-400 max-w-2xl mx-auto md:mx-0">
-              Technologies I've worked with and the skills I've developed over my journey in web development and blockchain.
+            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto md:mx-0">
+              Technologies Ive worked with and the skills Ive developed over my journey in web development and blockchain.
             </p>
           </div>
           <Skills />
@@ -201,7 +201,7 @@ export default function About() {
         >
           <div className="text-center md:text-left mb-8">
             <SectionHeading title="Work Experience" />
-            <p className="text-gray-400 max-w-2xl mx-auto md:mx-0">
+            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto md:mx-0">
               My professional journey in the world of Web3 and development.
             </p>
           </div>

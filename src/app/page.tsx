@@ -162,7 +162,7 @@ export default function Home() {
                   text={textSequence[0].text}
                   typingSpeed={100}
                   onComplete={() => setShowSecond(true)}
-                  className="text-white"
+                  className="text-gray-900 dark:text-white"
                 />
                 {showSecond && (
                   <TypingText
@@ -170,7 +170,7 @@ export default function Home() {
                     delay={textSequence[1].delay}
                     typingSpeed={100}
                     onComplete={() => setShowThird(true)}
-                    className="text-gray-200"
+                    className="text-gray-800 dark:text-gray-200"
                   />
                 )}
                 {showThird && (
@@ -179,7 +179,7 @@ export default function Home() {
                     delay={textSequence[2].delay}
                     typingSpeed={100}
                     onComplete={() => setShowFourth(true)}
-                    className="text-gray-100"
+                    className="text-gray-900 dark:text-gray-100"
                   />
                 )}
                 {showFourth && (
@@ -188,7 +188,7 @@ export default function Home() {
                     delay={textSequence[3].delay}
                     typingSpeed={100}
                     onComplete={() => setShowFifth(true)}
-                    className="text-gray-200"
+                    className="text-gray-800 dark:text-gray-200"
                   />
                 )}
                 {showFifth && (
@@ -196,7 +196,7 @@ export default function Home() {
                     text={textSequence[4].text}
                     delay={textSequence[4].delay}
                     typingSpeed={100}
-                    className="text-orange-400 font-bold"
+                    className="text-orange-600 dark:text-orange-400 font-bold"
                   />
                 )}
               </motion.div>
