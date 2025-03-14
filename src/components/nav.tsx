@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'next-view-transitions'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
@@ -9,6 +9,9 @@ import { ThemeSwitcher } from './theme-switcher'
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null)
+  const [lastScrollY, setLastScrollY] = useState(0)
   const path = usePathname()
 
   const links = [
@@ -18,12 +21,54 @@ const Nav = () => {
     { path: '/contact', text: 'Contact' },
   ]
 
+  // Track scroll position and direction with debounce for performance
+  useEffect(() => {
+    let scrollTimer: ReturnType<typeof setTimeout>
+    
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      
+      // Determine if we're scrolling up or down
+      if (currentScrollY > lastScrollY) {
+        setScrollDirection('down')
+      } else if (currentScrollY < lastScrollY) {
+        setScrollDirection('up')
+      }
+      
+      // Update last scroll position
+      setLastScrollY(currentScrollY)
+      
+      // Determine if we've scrolled past threshold
+      if (currentScrollY > 50) {
+        setScrolled(true)
+      } else {
+        setScrolled(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [lastScrollY])
+
   const toggleMenu = () => {
     setIsOpen(!isOpen)
   }
 
   return (
-    <div className="fixed top-0 z-50 w-full bg-bg">
+    <div 
+      className={clsx(
+        "fixed w-full z-50 transition-all duration-300",
+        scrolled 
+          ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-md py-2" 
+          : "bg-transparent py-4",
+        // Hide navbar when scrolling down (after 150px) and not at the top, show when scrolling up
+        !isOpen && scrollDirection === 'down' && scrolled && lastScrollY > 150 
+          ? "-top-20" 
+          : "top-0"
+      )}
+    >
       <div className="mx-auto max-w-7xl">
         {/* Overlay for mobile menu */}
         {isOpen && (
@@ -33,17 +78,27 @@ const Nav = () => {
           />
         )}
 
-        <div className="flex items-center justify-between p-4">
+        <div className="flex items-center justify-between px-4">
           {/* Logo */}
           <Link
             href="/"
-            className="text-red text-xl font-bold transition-colors hover:text-orange-400"
+            className={clsx(
+              "text-xl font-bold transition-all duration-300",
+              scrolled 
+                ? "text-gray-900 hover:text-orange-500 dark:text-white dark:hover:text-orange-400 scale-95" 
+                : "text-red hover:text-orange-400 scale-100"
+            )}
           >
             0xShubham.eth
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden items-center gap-2 rounded-lg bg-orange-400 p-2 shadow-lg lg:flex">
+          <nav className={clsx(
+            "hidden items-center gap-2 rounded-lg p-2 lg:flex transition-all duration-300",
+            scrolled 
+              ? "bg-orange-400/90 shadow-md" 
+              : "bg-orange-400 shadow-lg"
+          )}>
             {links.map((link) => (
               <Link
                 key={link.path}
@@ -65,19 +120,24 @@ const Nav = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="text-gray-900 hover:text-orange-400 dark:text-white lg:hidden"
+            className={clsx(
+              "hover:text-orange-400 lg:hidden",
+              scrolled 
+                ? "text-gray-900 dark:text-white" 
+                : "text-gray-900 dark:text-white"
+            )}
             onClick={toggleMenu}
           >
             <Menu size={24} />
           </button>
         </div>
 
-        {/* Mobile Sidebar - Updated with light/dark mode classes */}
+        {/* Mobile Sidebar */}
         <div
           className={clsx(
             'fixed right-0 top-0 z-50 h-full w-64 transform border-l transition-transform duration-300 ease-in-out lg:hidden',
-            'bg-white dark:bg-gray-900', // Added light mode background
-            'border-gray-200 dark:border-gray-800', // Added light mode border
+            'bg-white dark:bg-gray-900',
+            'border-gray-200 dark:border-gray-800',
             isOpen ? 'translate-x-0' : 'translate-x-full',
           )}
         >
@@ -99,9 +159,9 @@ const Nav = () => {
                   key={link.path}
                   href={link.path}
                   className={clsx(
-                    'rounded-md px-4 py-2 text-center font-medium transition-colors',
+                    'rounded-md px-4 py-2 text-center font-medium transition-all duration-200',
                     path === link.path
-                      ? 'bg-orange-400 font-bold text-gray-900'
+                      ? 'bg-orange-400 font-bold text-gray-900' 
                       : 'text-gray-900 hover:bg-gray-100 hover:font-bold dark:text-white dark:hover:bg-gray-800',
                   )}
                   onClick={toggleMenu}
