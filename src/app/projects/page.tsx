@@ -13,9 +13,11 @@ interface GitHubRepo {
   description: string | null
   html_url: string
   homepage: string | null
-  topics: string[]
+  topics?: string[]
   pushed_at: string
   stargazers_count: number
+  language: string | null
+  languages_url: string
 }
 
 interface ProjectData {
@@ -24,9 +26,11 @@ interface ProjectData {
   repoUrl: string
   liveLink: string
   topics: string[]
-  lastUpdated: string
+  lastUpdated: string | null
   stars: number
   isFeatured: boolean
+  language: string | null
+  languages: Record<string, number>
 }
 
 // Section heading component (reused from About page)
@@ -92,19 +96,24 @@ const ProjectCard = ({ project, index }: { project: ProjectData; index: number }
 
         <p className="mb-2 mt-2 flex-grow">{project.description}</p>
         
-        {project.topics.length > 0 && (
+        {project.language && (
           <div className="mb-4 flex flex-wrap gap-2">
-            {project.topics.slice(0, 4).map((topic) => (
+            <span 
+              className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 rounded-full font-medium"
+            >
+              {project.language}
+            </span>
+            {Object.keys(project.languages).filter(lang => lang !== project.language).slice(0, 3).map((lang) => (
               <span 
-                key={topic} 
+                key={lang} 
                 className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 rounded-full"
               >
-                {topic}
+                {lang}
               </span>
             ))}
-            {project.topics.length > 4 && (
+            {Object.keys(project.languages).length > 4 && (
               <span className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 rounded-full">
-                +{project.topics.length - 4} more
+                +{Object.keys(project.languages).length - 4} more
               </span>
             )}
           </div>
@@ -112,7 +121,7 @@ const ProjectCard = ({ project, index }: { project: ProjectData; index: number }
 
         <div className="mt-auto">
           <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">
-            Last updated: {new Date(project.lastUpdated).toLocaleDateString()}
+            Last updated: {project.lastUpdated ? new Date(project.lastUpdated).toLocaleDateString() : 'Unknown date'}
           </p>
           
           <div className="grid grid-cols-2 gap-5">
@@ -156,6 +165,8 @@ export default function Projects() {
   const [error, setError] = useState<string | null>(null)
   const [activeFilter, setActiveFilter] = useState<string>('all')
   const [availableTopics, setAvailableTopics] = useState<string[]>([])
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
   const projectsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -170,33 +181,50 @@ export default function Projects() {
           direction: 'desc',
         })
 
-        // Extract featured topics (we'll consider repositories with 'featured' topic as featured)
-        const transformedProjects = repos
-          .filter((repo: GitHubRepo) => !repo.topics?.includes('ignore'))
-          .map((repo: GitHubRepo) => ({
-            name: repo.name,
-            description: repo.description || '',
-            repoUrl: repo.html_url,
-            liveLink: repo.homepage || repo.html_url,
-            topics: repo.topics || [],
-            lastUpdated: repo.pushed_at,
-            stars: repo.stargazers_count,
-            isFeatured: repo.topics?.includes('featured') || false
-          }))
+        // Get language data for each repo
+        const reposWithLanguages = await Promise.all(
+          repos
+            .filter((repo) => !repo.topics?.includes('ignore'))
+            .map(async (repo) => {
+              // Get all languages used in the repo
+              let languages = {};
+              try {
+                const { data: languagesData } = await octokit.request(`GET ${repo.languages_url.replace('https://api.github.com', '')}`)
+                languages = languagesData;
+              } catch (err) {
+                console.error(`Failed to fetch languages for ${repo.name}:`, err);
+              }
 
-        // Collect all unique topics across projects
-        const allTopics = new Set<string>()
-        transformedProjects.forEach(project => {
-          project.topics.forEach(topic => {
-            if (topic !== 'featured' && topic !== 'ignore') {
-              allTopics.add(topic)
-            }
-          })
-        })
+              return {
+                name: repo.name,
+                description: repo.description || '',
+                repoUrl: repo.html_url,
+                liveLink: repo.homepage || repo.html_url,
+                topics: repo.topics || [],
+                lastUpdated: repo.pushed_at,
+                stars: repo.stargazers_count,
+                isFeatured: repo.topics?.includes('featured') || false,
+                language: repo.language,
+                languages: languages
+              };
+            })
+        );
+
+        // Collect all unique languages
+        const allLanguages = new Set<string>();
+        reposWithLanguages.forEach(project => {
+          if (project.language) {
+            allLanguages.add(project.language);
+          }
+          // Also add languages from the detailed languages object
+          Object.keys(project.languages).forEach(lang => {
+            allLanguages.add(lang);
+          });
+        });
         
-        setAvailableTopics(Array.from(allTopics))
-        setProjects(transformedProjects)
-        setFilteredProjects(transformedProjects)
+        setAvailableTopics(Array.from(allLanguages));
+        setProjects(reposWithLanguages);
+        setFilteredProjects(reposWithLanguages);
       } catch (err) {
         setError(
           err instanceof Error ? err.message : 'Failed to fetch projects',
@@ -209,6 +237,21 @@ export default function Projects() {
     fetchProjects()
   }, [])
 
+  // Handle outside clicks for dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isDropdownOpen && 
+          dropdownRef.current && 
+          !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isDropdownOpen]);
+  
+  
   // Filter projects when active filter changes
   useEffect(() => {
     if (activeFilter === 'all') {
@@ -216,9 +259,14 @@ export default function Projects() {
     } else if (activeFilter === 'featured') {
       setFilteredProjects(projects.filter(project => project.isFeatured))
     } else {
-      setFilteredProjects(projects.filter(project => project.topics.includes(activeFilter)))
+      setFilteredProjects(
+        projects.filter(project => 
+          project.language === activeFilter || 
+          Object.keys(project.languages).includes(activeFilter)
+        )
+      )
     }
-  }, [activeFilter, projects])
+  }, [activeFilter, projects]);;
 
   if (error) {
     return (
@@ -232,7 +280,7 @@ export default function Projects() {
       </motion.div>
     )
   }
-
+  
   if (isLoading) {
     return (
       <div className="min-h-[400px]">
@@ -280,7 +328,7 @@ export default function Projects() {
         
         <p className="text-gray-600 dark:text-gray-400 max-w-2xl mb-8">
           A collection of my work, automatically pulled from my GitHub repositories.
-          Filter by technology or check out my featured projects.
+          Filter by programming language or check out my featured projects.
         </p>
 
         {/* Filter buttons */}
@@ -305,35 +353,43 @@ export default function Projects() {
           >
             Featured
           </button>
-          {availableTopics.slice(0, 6).map(topic => (
+          {availableTopics.slice(0, 6).map(language => (
             <button
-              key={topic}
+              key={language}
               className={`px-3 py-1 rounded-full text-sm ${
-                activeFilter === topic
+                activeFilter === language
                   ? 'bg-orange-500 text-white'
                   : 'bg-gray-200 text-gray-800 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700'
               }`}
-              onClick={() => setActiveFilter(topic)}
+              onClick={() => setActiveFilter(language)}
             >
-              {topic}
+              {language}
             </button>
           ))}
           {availableTopics.length > 6 && (
-            <div className="relative group">
-              <button className="px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-800 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">
-                More...
+            <div className="relative" ref={dropdownRef}>
+              <button 
+                className="px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-800 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              >
+                More Languages...
               </button>
-              <div className="absolute left-0 top-full mt-2 w-48 bg-white dark:bg-gray-900 shadow-lg rounded-base z-10 hidden group-hover:block">
-                {availableTopics.slice(6).map(topic => (
-                  <button
-                    key={topic}
-                    className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800"
-                    onClick={() => setActiveFilter(topic)}
-                  >
-                    {topic}
-                  </button>
-                ))}
-              </div>
+              {isDropdownOpen && (
+                <div className="absolute left-0 top-full mt-2 w-48 bg-white dark:bg-gray-900 shadow-lg rounded-base z-10">
+                  {availableTopics.slice(6).map(language => (
+                    <button
+                      key={language}
+                      className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800"
+                      onClick={() => {
+                        setActiveFilter(language);
+                        setIsDropdownOpen(false);
+                      }}
+                    >
+                      {language}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </div>
