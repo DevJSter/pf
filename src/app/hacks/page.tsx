@@ -208,7 +208,7 @@ const HackathonCard: React.FC<{ hack: Hack; index: number; isVisible?: boolean }
         <div className="md:w-3/5 font-base text-text flex flex-col justify-between">
           <div>
             <h2 className="text-xl font-heading font-bold sm:text-2xl">
-              <span className="text-orange-400">{hack.name}</span> - {hack.projectName}
+              <span className="text-black-400">{hack.name}</span> - {hack.projectName}
             </h2>
 
             <p className="mt-3 text-gray-800 dark:text-gray-200 leading-relaxed">{hack.description}</p>
