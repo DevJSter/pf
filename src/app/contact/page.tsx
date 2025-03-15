@@ -267,48 +267,48 @@ const Contact = () => {
             <ContactMethod 
               icon={<GithubIcon className="w-6 h-6" />}
               label="GitHub"
-              value="github.com/shubham"
-              link="https://github.com/shubham"
+              value=" "
+              link="https://github.com/DevJSter"
               delay={0.2}
             />
             <ContactMethod 
               icon={<LinkedInIcon className="w-6 h-6" />}
               label="LinkedIn"
-              value="linkedin.com/in/shubham"
-              link="https://linkedin.com/in/shubham"
+              value=""
+              link="https://linkedin.com/in/0xShubhamm"
               delay={0.3}
             />
             
             {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="md:col-span-2 p-6 rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 shadow-lg"
-            >
-              <h3 className="text-lg font-semibold text-white mb-4">Quick Message</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <input 
-                  type="text" 
-                  placeholder="Name" 
-                  className="px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-orange-400 focus:outline-none"
+              {/* <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="md:col-span-2 p-6 rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 shadow-lg"
+              >
+                <h3 className="text-lg font-semibold text-white mb-4">Quick Message</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                  <input 
+                    type="text" 
+                    placeholder="Name" 
+                    className="px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-orange-400 focus:outline-none"
+                  />
+                  <input 
+                    type="email" 
+                    placeholder="Email" 
+                    className="px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-orange-400 focus:outline-none"
+                  />
+                </div>
+                <textarea 
+                  placeholder="Your message" 
+                  rows={4}
+                  className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-orange-400 focus:outline-none mb-4"
                 />
-                <input 
-                  type="email" 
-                  placeholder="Email" 
-                  className="px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-orange-400 focus:outline-none"
-                />
-              </div>
-              <textarea 
-                placeholder="Your message" 
-                rows={4}
-                className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-orange-400 focus:outline-none mb-4"
-              />
-              <button className="px-6 py-2 bg-orange-400 text-white font-medium rounded-lg hover:bg-orange-500 transition-colors duration-300">
-                Send Message
-              </button>
-            </motion.div>
+                <button className="px-6 py-2 bg-orange-400 text-white font-medium rounded-lg hover:bg-orange-500 transition-colors duration-300">
+                  Send Message
+                </button>
+              </motion.div> */}
           </div>
         </motion.div>
 
