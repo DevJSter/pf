@@ -267,14 +267,14 @@ const Contact = () => {
             <ContactMethod 
               icon={<GithubIcon className="w-6 h-6" />}
               label="GitHub"
-              value=" "
+              value="DevJSter"
               link="https://github.com/DevJSter"
               delay={0.2}
             />
             <ContactMethod 
               icon={<LinkedInIcon className="w-6 h-6" />}
               label="LinkedIn"
-              value=""
+              value="0xShubhamm"
               link="https://linkedin.com/in/0xShubhamm"
               delay={0.3}
             />
