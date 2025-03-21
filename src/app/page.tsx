@@ -87,7 +87,7 @@ export default function Home() {
   const [imageLoaded, setImageLoaded] = useState(false)
 
   const textSequence = [
-    { text: 'Hello Stranger', delay: 0 },
+    { text: 'Gm Stranger', delay: 0 },
     { text: 'Nice to Meet you', delay: 500 },
     { text: 'My Name is Shubham', delay: 500 },
     { text: 'Welcome to my', delay: 500 },

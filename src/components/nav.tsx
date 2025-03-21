@@ -86,7 +86,7 @@ const Nav = () => {
               "text-xl font-bold transition-all duration-300",
               scrolled 
                 ? "text-gray-900 hover:text-orange-500 dark:text-white dark:hover:text-orange-400 scale-95" 
-                : "text-gray-900 dark:text-red hover:text-orange-400 scale-100"
+                : "text-gray-900 dark:text-red  hover:text-orange-400 scale-100"
             )}
           >
             0xShubham.eth

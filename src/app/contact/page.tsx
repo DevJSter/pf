@@ -216,7 +216,7 @@ const Contact = () => {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="xs:w-[140px] xs:text-xs mx-2 mt-3 w-[120px] text-[10px] font-bold sm:mx-4 sm:mt-5 sm:w-[160px] sm:text-sm"
               >
-                You looking for a good developer
+                You looking for a gud developer
               </motion.p>
               <motion.p 
                 initial={{ opacity: 0, y: -10 }}
@@ -224,7 +224,7 @@ const Contact = () => {
                 transition={{ duration: 0.5, delay: 0.6 }}
                 className="xs:w-[140px] xs:text-xs mx-2 mt-3 w-[120px] text-[10px] font-bold sm:mx-4 sm:mt-5 sm:w-[160px] sm:text-sm"
               >
-                Me looking for a good job
+                Me looking for a gud job
               </motion.p>
             </div>
             <div className="xs:h-[250px] xs:w-[320px] relative m-auto h-[200px] w-[280px] sm:h-[350px] sm:w-[400px] md:h-[450px] md:w-[450px]">

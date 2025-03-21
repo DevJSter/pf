@@ -97,7 +97,7 @@ const ProjectCard = ({ project, index }: { project: ProjectData; index: number }
         <p className="mb-2 mt-2 flex-grow">{project.description}</p>
         
         {project.language && (
-          <div className="mb-4 flex flex-wrap gap-2">
+          <div className="mb-4 flex flex-wrap gap-2 dark:text-white">
             <span 
               className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 rounded-full font-medium"
             >
@@ -120,7 +120,7 @@ const ProjectCard = ({ project, index }: { project: ProjectData; index: number }
         )}
 
         <div className="mt-auto">
-          <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">
+          <p className="text-xs text-gray-700 dark:text-gray-900 mb-4">
             Last updated: {project.lastUpdated ? new Date(project.lastUpdated).toLocaleDateString() : 'Unknown date'}
           </p>
           
@@ -252,7 +252,7 @@ export default function Projects() {
   }, [isDropdownOpen]);
   
   
-  // Filter projects when active filter changes
+    // Filter projects when active filter changes
   useEffect(() => {
     if (activeFilter === 'all') {
       setFilteredProjects(projects)
@@ -369,7 +369,7 @@ export default function Projects() {
           {availableTopics.length > 6 && (
             <div className="relative" ref={dropdownRef}>
               <button 
-                className="px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-800 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700"
+                className="px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-100 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
                 More Languages...
