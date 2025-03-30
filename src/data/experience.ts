@@ -7,6 +7,7 @@ const PAST_ROLES: {
   endDate: string
   link?: string
 }[] = [
+  
   {
     id: '1',
     company: 'What was that Meme?',
@@ -27,6 +28,26 @@ const PAST_ROLES: {
     endDate: 'Now',
     link: 'https://fomo-wallet-frontend.vercel.app',
   },
+  {
+    id: '3',
+    company: 'Qoneqt',
+    role: 'Blockchain developer Intern',
+    description:
+      'Started as a Blockchain Intern Developer at Human Qoutient Pvt Ltd',
+    startDate: 'April 2025',
+    endDate: 'Now',
+    link: 'https://qoneqt.com/profile/0xshubham',
+  },
+  // {
+  //   id: '',
+  //   company: '',
+  //   role: '',
+  //   description:
+  //     '',
+  //   startDate: '',
+  //   endDate: '',
+  //   link: '',
+  // },
 ]
 
 export default PAST_ROLES
