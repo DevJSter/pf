@@ -10,10 +10,16 @@ import './assets/favicon.ico'
 const montserrat = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  manifest: '/manifest.json',
   title: 'Shubham Tiwari <Console Nerd>',
   description: 'Proof of Work is the proof of time spent on work.',
-}
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/icon.jpg', // or '/icon-512.jpg'
+    shortcut: '/icon.jpg',
+    apple: '/icon.jpg',
+  },
+};
+
 
 export default function RootLayout({
   children,
