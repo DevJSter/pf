@@ -86,14 +86,6 @@ const ProjectCard = ({ project, index }: { project: ProjectData; index: number }
           )}
         </div>
 
-        {project.isFeatured && (
-          <div className="mb-2">
-            <span className="inline-block px-2 py-1 text-xs bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100 rounded-full">
-              Featured
-            </span>
-          </div>
-        )}
-
         <p className="mb-2 mt-2 flex-grow">{project.description}</p>
         
         {project.language && (
