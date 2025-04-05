@@ -15,10 +15,11 @@ const Nav = () => {
   const path = usePathname()
 
   const links = [
-    { path: '/about', text: 'About' },
-    { path: '/hacks', text: 'Hacks' },
-    { path: '/projects', text: 'Projects' },
-    { path: '/contact', text: 'Contact' },
+    { path: '/about', text: 'about' },
+    { path: '/hacks', text: 'hacks' },
+    { path: '/projects', text: 'projects' },
+    { path : '/audits', text : 'audits' },
+    { path: '/contact', text: 'contact' },
   ]
 
   // Track scroll position and direction with debounce for performance
@@ -59,7 +60,7 @@ const Nav = () => {
   return (
     <div 
       className={clsx(
-        "fixed w-full z-50 transition-all duration-300",
+        "fixed w-full z-50 transition-all duration-300 ",
         scrolled 
           ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-md py-2" 
           : "bg-transparent py-4",
@@ -83,7 +84,7 @@ const Nav = () => {
           <Link
             href="/"
             className={clsx(
-              "text-xl font-bold transition-all duration-300",
+              "text-xl font-bold transition-all duration-300 font-bold",
               scrolled 
                 ? "text-gray-900 hover:text-orange-500 dark:text-white dark:hover:text-orange-400 scale-95" 
                 : "text-gray-900 dark:text-white hover:text-orange-400 dark:hover:text-orange-400 scale-100"
