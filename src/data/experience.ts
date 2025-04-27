@@ -33,7 +33,10 @@ const PAST_ROLES: {
     company: 'Qoneqt',
     role: 'Blockchain developer Intern',
     description:
-      'Started as a Blockchain Intern Developer at Human Qoutient Pvt Ltd',
+      `Started as a Blockchain Intern Developer at Human Qoutient Pvt Ltd .    
+      Built Subgraph ( Customisable Graph Protocol's Indexer ) / NodeJS Indexer For the Oboswap DEX .
+      
+      `,
     startDate: 'April 2025',
     endDate: 'Now',
     link: 'https://qoneqt.com/profile/0xshubham',
