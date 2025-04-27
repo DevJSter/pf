@@ -12,7 +12,6 @@ const Nav = () => {
   const [scrolled, setScrolled] = useState(false)
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null)
   const [lastScrollY, setLastScrollY] = useState(0)
-  const [isMobile, setIsMobile] = useState(false)
   const path = usePathname()
 
   const links = [
@@ -23,24 +22,10 @@ const Nav = () => {
     { path: '/contact', text: 'contact' },
   ]
 
-  // Detect if we're on mobile
-  useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 1024) // 1024px is the lg breakpoint in Tailwind
-    }
-    
-    // Check initially
-    checkIfMobile()
-    
-    // Add resize listener
-    window.addEventListener('resize', checkIfMobile)
-    
-    // Clean up
-    return () => window.removeEventListener('resize', checkIfMobile)
-  }, [])
-
   // Track scroll position and direction with debounce for performance
   useEffect(() => {
+    let scrollTimer: ReturnType<typeof setTimeout>
+    
     const handleScroll = () => {
       const currentScrollY = window.scrollY
       
@@ -72,25 +57,17 @@ const Nav = () => {
     setIsOpen(!isOpen)
   }
 
-  // Determine if navbar should be hidden
-  const shouldHideNavbar = () => {
-    // Don't hide on mobile regardless of scroll
-    if (isMobile) {
-      return false
-    }
-    
-    // On desktop, hide when scrolling down past threshold
-    return !isOpen && scrollDirection === 'down' && scrolled && lastScrollY > 150
-  }
-
   return (
     <div 
       className={clsx(
-        "fixed w-full z-50 transition-all duration-300",
+        "fixed w-full z-50 transition-all duration-300 ",
         scrolled 
           ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-md py-2" 
           : "bg-transparent py-4",
-        shouldHideNavbar() ? "-top-20" : "top-0"
+        // Hide navbar when scrolling down (after 150px) and not at the top, show when scrolling up
+        !isOpen && scrollDirection === 'down' && scrolled && lastScrollY > 150 
+          ? "-top-20" 
+          : "top-0"
       )}
     >
       <div className="mx-auto max-w-7xl">
@@ -107,7 +84,7 @@ const Nav = () => {
           <Link
             href="/"
             className={clsx(
-              "text-xl font-bold transition-all duration-300",
+              "text-xl font-bold transition-all duration-300 font-bold",
               scrolled 
                 ? "text-gray-900 hover:text-orange-500 dark:text-white dark:hover:text-orange-400 scale-95" 
                 : "text-gray-900 dark:text-white hover:text-orange-400 dark:hover:text-orange-400 scale-100"
