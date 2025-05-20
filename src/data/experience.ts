@@ -34,8 +34,8 @@ const PAST_ROLES: {
     role: 'Blockchain developer Intern',
     description:
       `Started as a Blockchain Intern Developer at Human Qoutient Pvt Ltd .    
-      Built Subgraph ( Customisable Graph Protocol's Indexer ) / NodeJS Indexer For the Oboswap DEX .
-      
+       Built Subgraph ( Customised Graph Protocol's Indexer ) / NodeJS Indexer For the Oboswap DEX .
+       Building a Layer 2 Blockchain {Arbitrum Nitro Node } for the Social Mining on Qoneqt
       `,
     startDate: 'April 2025',
     endDate: 'Now',
