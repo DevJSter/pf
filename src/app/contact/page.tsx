@@ -3,6 +3,14 @@ import React, { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import memeImage from '../assets/meme.png'
 import { motion } from 'framer-motion'
+import { TwitterIcon } from 'lucide-react'
+import {
+  SiTelegram,
+  SiX,
+  SiGithub,
+  SiGmail,
+
+} from '@icons-pack/react-simple-icons'
 
 // Reuse the improved TypingText component from About page
 interface TypingTextProps {
@@ -258,25 +266,32 @@ const Contact = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
             <ContactMethod 
-              icon={<MailIcon className="w-6 h-6" />}
+              icon={<SiGmail className="w-6 h-6" />}
               label="Email"
               value="shubht3303@gmail.com"
               link="mailto:shubht3303@gmail.com"
               delay={0.1}
             />
             <ContactMethod 
-              icon={<GithubIcon className="w-6 h-6" />}
+              icon={<SiGithub className="w-6 h-6" />}
               label="GitHub"
               value="DevJSter"
               link="https://github.com/DevJSter"
               delay={0.2}
             />
             <ContactMethod 
-              icon={<LinkedInIcon className="w-6 h-6" />}
-              label="LinkedIn"
-              value="0xShubhamm"
-              link="https://linkedin.com/in/0xShubhamm"
+              icon={<SiX className="w-6 h-6" />}
+              label="X (Twitter)"
+              value="shubhamtwtss"
+              link="https://x.com/shubhamtwtss"
               delay={0.3}
+            />
+            <ContactMethod 
+              icon={<SiTelegram className="w-6 h-6" />}
+              label="Telegram"
+              value="DevShubhamm"
+              link="https://t.me/DevShubhamm"
+              delay={0.4}
             />
             
             {/* Contact Form */}
