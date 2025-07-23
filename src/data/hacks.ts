@@ -34,7 +34,7 @@ const HACKS: HackathonProject[] = [
     prizes: [
       "🏆 Graph Top 10 Projects",
       "🔐 Excellence in Privacy",
-      "⭐ CDP Prize Pool Winner"
+      "⭐ Coinbase Developer Pack Prize Pool Winner"
     ],
     liveLink: "https://fomo-wallet-front-end.vercel.app/",
     repoUrl: "https://github.com/Fomo-Wallet/"
