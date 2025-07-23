@@ -4,6 +4,7 @@ import {
   SiGmail,
   SiLinkedin,
   SiMedium,
+  SiTelegram,
   SiX,
   SiYoutube,
 } from '@icons-pack/react-simple-icons'
@@ -18,7 +19,11 @@ const Links: FC = () => {
   const links: LinkItem[] = [
     {
       icon: SiX,
-      href: 'https://twitter.com/shubhamtwtss',
+      href: 'https://x.com/shubhamtwtss',
+    },
+    {
+      icon : SiTelegram,
+      href : 'https://t.me/DevShubhamm'
     },
     {
       icon: SiGmail,
@@ -31,14 +36,6 @@ const Links: FC = () => {
     {
       icon: SiMedium,
       href: 'https://medium.com/@0xShubham',
-    },
-    {
-      icon : SiYoutube,
-      href : 'https://youtube.com/@0xShubhamm'
-    },
-    {
-      icon: SiLinkedin,
-      href: 'https://www.linkedin.com/in/0xShubhamm/',
     },
   ]
 

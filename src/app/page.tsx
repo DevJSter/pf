@@ -87,11 +87,11 @@ export default function Home() {
   const [imageLoaded, setImageLoaded] = useState(false)
 
   const textSequence = [
-    { text: 'Gm Stranger', delay: 0 },
-    { text: 'Nice to Meet you', delay: 500 },
-    { text: 'My Name is Shubham', delay: 500 },
-    { text: 'Welcome to my', delay: 500 },
-    { text: 'realm ;)', delay: 300 },
+    { text: 'gmeow anon', delay: 0 },
+    { text: 'great to have you here', delay: 200 },
+    { text: 'shubham this side ', delay: 200 },
+    { text: 'ggs and welcome to my', delay: 200 },
+    { text: 'realm ;)', delay: 200 },
   ]
 
   // Left and right button arrays for easier management

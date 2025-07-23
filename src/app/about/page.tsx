@@ -111,7 +111,7 @@ export default function About() {
   const introText =
     'A quiet Saturday evening, lofi beats playing softly, rain tapping ' +
     'against the window, and a warm cup of coffee by my side. The cursor ' +
-    'blinks, and I type console.log("Namaste Dunia"). This is my flow state — ' +
+    'blinks, and I type console.log("Am a hecker lol "). This is my flow state — ' +
     'building decentralized solutions, solving puzzles, and bringing ideas ' +
     'to life. Two years deep in Web3, crafting smart contracts and dApps. ' +
     'Beyond the code, I breathe music, clear my mind through meditation, ' +
@@ -142,7 +142,7 @@ export default function About() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 to-orange-600 dark:from-white dark:to-orange-400 bg-clip-text text-transparent pb-2">
-                Hey, I&apos;m Shubham.
+                Gm, I&apos;m Shubham.
               </h1>
               <div className="h-1 w-20 bg-orange-500 mx-auto md:mx-0 rounded-full mt-2" />
             </motion.div>
@@ -182,7 +182,7 @@ export default function About() {
           <div className="text-center md:text-left mb-8">
             <SectionHeading title="Skills & Technologies" />
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto md:mx-0">
-              Technologies Ive worked with and the skills Ive developed over my journey in web development and blockchain.
+             Technologies I&apos;ve previously worked with and the skills Ive developed over my journey in web development and web3.
             </p>
           </div>
           <Skills />
