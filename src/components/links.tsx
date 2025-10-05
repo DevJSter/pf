@@ -37,10 +37,6 @@ const Links: FC = () => {
       icon: SiMedium,
       href: 'https://medium.com/@0xShubham',
     },
-    {
-      icon : SiCyfrin, 
-      href: 'https://profiles.cyfrin.io/wagmi'
-    }
   ]
 
   return (
