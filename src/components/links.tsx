@@ -19,7 +19,7 @@ const Links: FC = () => {
   const links: LinkItem[] = [
     {
       icon: SiX,
-      href: 'https://x.com/shubhamtwtss',
+      href: 'https://x.com/shubhamtwtt',
     },
     {
       icon : SiTelegram,
@@ -37,6 +37,10 @@ const Links: FC = () => {
       icon: SiMedium,
       href: 'https://medium.com/@0xShubham',
     },
+    {
+      icon : SiCyfrin, 
+      href: 'https://profiles.cyfrin.io/wagmi'
+    }
   ]
 
   return (
