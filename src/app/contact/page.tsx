@@ -282,8 +282,8 @@ const Contact = () => {
             <ContactMethod 
               icon={<SiX className="w-6 h-6" />}
               label="X (Twitter)"
-              value="shubhamtwtss"
-              link="https://x.com/shubhamtwtss"
+              value="shubhamtwtt"
+              link="https://x.com/shubhamtwtt"
               delay={0.3}
             />
             <ContactMethod 
