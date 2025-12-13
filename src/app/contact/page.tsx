@@ -275,8 +275,8 @@ const Contact = () => {
             <ContactMethod 
               icon={<SiGithub className="w-6 h-6" />}
               label="GitHub"
-              value="DevJSter"
-              link="https://github.com/DevJSter"
+              value="0xshubhs"
+              link="https://github.com/0xshubhs"
               delay={0.2}
             />
             <ContactMethod 

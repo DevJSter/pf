@@ -31,7 +31,7 @@ const Links: FC = () => {
     },
     {
       icon: SiGithub,
-      href: 'https://github.com/DevJSter',
+      href: 'https://github.com/0xshubhs',
     },
     {
       icon: SiMedium,

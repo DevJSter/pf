@@ -53,7 +53,7 @@ const HACKS: HackathonProject[] = [
     ],
     prizes: ["🌊 Avalanche Etna Track Winner"],
     liveLink: "https://stealth-pass.vercel.app/",
-    repoUrl: "https://github.com/Devjster/stealthpass-frontend/"
+    repoUrl: "https://github.com/0xshubhs/stealthpass-frontend/"
   },
   {
     name: "Mumbai hacks 2024",
@@ -127,8 +127,8 @@ const HACKS: HackathonProject[] = [
     prizes: [
       "🥈 1st Runner up of Best WebApp and PWA track"
     ],
-    liveLink: "https://github.com/DevJSter/college-connect",
-    repoUrl: "https://github.com/DevJSter/college-connect"
+    liveLink: "https://github.com/0xshubhs/college-connect",
+    repoUrl: "https://github.com/0xshubhs/college-connect"
   },
   //  {
   //   name: "",
